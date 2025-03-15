@@ -9,7 +9,7 @@ function App() {
 
   const handleAction = async (service: string, action: string) => {
     try {
-      await axios.post(`http://localhost:5000/${action}/${service}`);
+      await axios.post(`http://192.168.1.87:5000/${action}/${service}`);
       checkStatus(service);
     } catch (error) {
       console.error("Error:", error);
@@ -18,8 +18,8 @@ function App() {
 
   const checkStatus = async (service: string) => {
     try {
-      const response = await axios.get(`http://localhost:5000/status/${service}`);
-      console.log("Status:", response.data.service);
+      const response = await axios.get(`http://192.168.1.87:5000/status/${service}`);
+      console.log("Status:", response);
       setStatus((prev) => ({ ...prev, [service]: response.data.status }));
     } catch (error) {
       console.error("Error fetching status:", error);
